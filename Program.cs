@@ -1,60 +1,43 @@
-﻿namespace Assignments1
+﻿namespace Assignment2B
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+            //declaring variables
+            float number, width;
 
-            //assigning values to variables
-            string originalUserName = "username";
-            string originalPassword = "password";
-
-            //assigning variables for userinput
-            string userName, password;
-            int attempt = 0; // for counting failed attempts
-            const int maxAttempts = 3; // maximum attempts a user can use
-
-
-            //user authenticating loop
-            while (attempt < maxAttempts)
+            //input and validate the numbers
+            Console.Write("Enter a number: ");
+            while(!float.TryParse(Console.ReadLine(), out number))
             {
-
-                //get user inputs
-                Console.Write("Enter User Name: ");
-                userName = Console.ReadLine();
-
-                Console.Write("Enter Password: ");
-                password = Console.ReadLine();
-
-
-                //validating
-                if (userName == originalUserName && password == originalPassword)
-                {
-                    Console.WriteLine("Login Successfull!");
-                    break;
-                }
-                //counting wrong attempts
-                else
-                {
-                    attempt++;
-                    Console.WriteLine($"Invalid username or password. Attempt {attempt} out of {maxAttempts}!!");
-                }
-
-                //execceding maxAttempt limit
-                if (attempt == maxAttempts)
-                {
-                    Console.WriteLine("You have been rejected after 3 wrong attempts!!");
-                }
+                Console.Write("Only numbers are allowded!! Enter a number: ");
             }
+            Console.Write("Enter your desired width: ");
+            while(!float.TryParse(Console.ReadLine(),out width) || width<=0)
+            {
+                Console.Write("Only positive numbers Are Allowded!! Enter a valid width: ");
+            }
+
+            // Display the triangle
+            Console.WriteLine("\nHere is your triangle:");
+            for (int i = 1; i <= width; i++)
+            {
+                for (int j = 1; j <= i; j++)
+                {
+                    Console.Write(number + " ");
+                }
+                Console.WriteLine();
+            }
+
             // Keep the console window open
-            Console.WriteLine("Press any key to exit...");
+            Console.WriteLine("\nPress any key to exit...");
             Console.ReadKey();
         }
+
     }
-}
     
+}
 
-
-
-// user id & password as i/p - string 
-//after 3 wrong attempts, user will be rejected 
+// take a number and width also a number as i/p
+//displays a triangle of thet width, using that number.
